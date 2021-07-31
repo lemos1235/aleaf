@@ -5,7 +5,7 @@ use jni::{
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_leaf_example_aleaf_SimpleVpnService_runLeaf(
+pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
     env: JNIEnv,
     _: JClass,
     config_path: JString,
@@ -26,6 +26,7 @@ pub unsafe extern "C" fn Java_com_leaf_example_aleaf_SimpleVpnService_runLeaf(
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path),
         socket_protect_path: Some(protect_path),
+        auto_reload: true,
         runtime_opt: leaf::RuntimeOption::SingleThread,
     };
     leaf::start(0, opts).unwrap();
@@ -33,7 +34,7 @@ pub unsafe extern "C" fn Java_com_leaf_example_aleaf_SimpleVpnService_runLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_leaf_example_aleaf_SimpleVpnService_stopLeaf(
+pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
