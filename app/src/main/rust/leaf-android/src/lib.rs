@@ -39,3 +39,13 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
 ) {
     leaf::shutdown(0);
 }
+
+
+#[allow(non_snake_case)]
+#[no_mangle]
+pub unsafe extern "C" fn Java_com_star_StarVpnService_reloadLeaf(
+    _: JNIEnv,
+    _: JClass,
+) {
+    leaf::reload(0).unwrap();
+}
