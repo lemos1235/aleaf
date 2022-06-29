@@ -26,9 +26,9 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path),
         socket_protect_path: Some(protect_path),
-        runtime_opt: leaf::RuntimeOption::SingleThread,
+        runtime_opt: leaf::RuntimeOption::MultiThreadAuto(6),
     };
-    leaf::start(0, opts).unwrap();
+    leaf::start(10086, opts).unwrap();
 }
 
 #[allow(non_snake_case)]
@@ -37,7 +37,7 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
-    leaf::shutdown(0);
+    leaf::shutdown(10086);
 }
 
 
@@ -47,5 +47,5 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_reloadLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
-    leaf::reload(0).unwrap();
+    leaf::reload(10086).unwrap();
 }
