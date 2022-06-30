@@ -26,7 +26,7 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path),
         // socket_protect_path: Some(protect_path),
-        runtime_opt: leaf::RuntimeOption::SingleThread,
+        runtime_opt: leaf::RuntimeOption::MultiThreadAuto(2),
     };
     leaf::start(0, opts).unwrap();
 }
