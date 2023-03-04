@@ -5,11 +5,10 @@ use jni::{
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
+pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_runLeaf(
     env: JNIEnv,
     _: JClass,
     config_path: JString,
-    _protect_path: JString,
 ) {
     let config_path = env
         .get_string(config_path)
@@ -17,15 +16,8 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
         .to_str()
         .unwrap()
         .to_owned();
-    // let protect_path = env
-    //     .get_string(_protect_path)
-    //     .unwrap()
-    //     .to_str()
-    //     .unwrap()
-    //     .to_owned();
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path),
-        // socket_protect_path: Some(protect_path),
         runtime_opt: leaf::RuntimeOption::MultiThreadAuto(2),
     };
     leaf::start(0, opts).unwrap();
@@ -33,7 +25,7 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
+pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_stopLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
@@ -43,7 +35,7 @@ pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_star_StarVpnService_reloadLeaf(
+pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_reloadLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
