@@ -5,7 +5,7 @@ use jni::{
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_runLeaf(
+pub unsafe extern "C" fn Java_club_lemos_vpn_logic_LeafVpnService_runLeaf(
     env: JNIEnv,
     _: JClass,
     config_path: JString,
@@ -25,7 +25,7 @@ pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_runLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_stopLeaf(
+pub unsafe extern "C" fn Java_club_lemos_vpn_logic_LeafVpnService_stopLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
@@ -35,7 +35,7 @@ pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_stopLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_club_lemos_android_logic_LeafVpnService_reloadLeaf(
+pub unsafe extern "C" fn Java_club_lemos_vpn_logic_LeafVpnService_reloadLeaf(
     _: JNIEnv,
     _: JClass,
 ) {
