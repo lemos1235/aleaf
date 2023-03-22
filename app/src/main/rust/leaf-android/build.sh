@@ -15,7 +15,7 @@ export PATH="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin/":$PATH
 android_tools="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin"
 api=26
 
-for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv7-linux-androideabi; do
+for target in aarch64-linux-android x86_64-linux-android; do
 	case $target in
 		'x86_64-linux-android')
 			export CC_x86_64_linux_android="$android_tools/${target}${api}-clang"
@@ -25,7 +25,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/x86_64/"
 			case $mode in
 				'release')
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/config-conf leaf/inbound-socks leaf/inbound-tun leaf/outbound-direct leaf/outbound-drop leaf/outbound-redirect leaf/outbound-socks leaf/outbound-failover leaf/outbound-static leaf/outbound-tryall" --release
 					cp "$BASE/target/$target/release/libleafandroid.so" "$BASE/../../jniLibs/x86_64/"
 					;;
 				*)
@@ -42,7 +42,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/arm64-v8a/"
 			case $mode in
 				'release')
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/config-conf leaf/inbound-socks leaf/inbound-tun leaf/outbound-direct leaf/outbound-drop leaf/outbound-redirect leaf/outbound-socks leaf/outbound-failover leaf/outbound-static leaf/outbound-tryall" --release
 					cp "$BASE/target/$target/release/libleafandroid.so" "$BASE/../../jniLibs/arm64-v8a/"
 					;;
 				*)
@@ -59,7 +59,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/armeabi-v7a/"
 			case $mode in
 				'release')
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/config-conf leaf/inbound-tun leaf/outbound-direct leaf/outbound-drop leaf/outbound-redirect leaf/outbound-socks leaf/outbound-failover leaf/outbound-static leaf/outbound-tryall" --release
 					cp "$BASE/target/$target/release/libleafandroid.so" "$BASE/../../jniLibs/armeabi-v7a/"
 					;;
 				*)
@@ -76,7 +76,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/x86/"
 			case $mode in
 				'release')
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/config-conf leaf/inbound-tun leaf/outbound-direct leaf/outbound-drop leaf/outbound-redirect leaf/outbound-socks leaf/outbound-failover leaf/outbound-static leaf/outbound-tryall" --release
 					cp "$BASE/target/$target/release/libleafandroid.so" "$BASE/../../jniLibs/x86/"
 					;;
 				*)
