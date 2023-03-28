@@ -15,7 +15,7 @@ export PATH="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin/":$PATH
 android_tools="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin"
 api=26
 
-for target in aarch64-linux-android x86_64-linux-android; do
+for target in aarch64-linux-android x86_64-linux-android armv7-linux-androideabi; do
 	case $target in
 		'x86_64-linux-android')
 			export CC_x86_64_linux_android="$android_tools/${target}${api}-clang"
